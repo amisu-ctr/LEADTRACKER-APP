@@ -4,11 +4,10 @@ const inputEl = document.getElementById("input-el")
 let ulEl = document.getElementById("ul-el")
 
 let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
-// if(leadsFromLocalStorage){
-//     myLeads = leadsFromLocalStorage
-//     renderLeads()
-//     console.log(myLeads)
-// }
+if(leadsFromLocalStorage){
+    myLeads = leadsFromLocalStorage
+    renderLeads()
+}
 
 inputBtn.addEventListener('click', function() {
     myLeads.push(inputEl.value)
@@ -28,5 +27,3 @@ for (let i = 0; i < myLeads.length; i++){
 }
 ulEl.innerHTML = listItems
 }
-
-console.log(myLeads)
