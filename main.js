@@ -7,15 +7,15 @@ let deleteBtn = document.getElementById("delete-btn")
 let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
 if(leadsFromLocalStorage){   // even upon refresh set myLeads to local storage to persist rendering on the page
     myLeads = leadsFromLocalStorage
-    renderLeads()
+    render(myLeads)
 }
 
 //listen for dbclicks on the delete button
-//when clicked , clear localStorage, myLeads and call render() which is now an empty array
+//when clicked , clear localStorage, myLeads and call render() with the emptied myLeads array as its argument
 deleteBtn.addEventListener('dblclick', function(){
     localStorage.clear();
     myLeads = [];
-    renderLeads()
+    render(myLeads)
 
 })
 
@@ -23,15 +23,17 @@ inputBtn.addEventListener('click', function() {
     myLeads.push(inputEl.value)
     inputEl.value = ''
     localStorage.setItem("myLeads", JSON.stringify(myLeads))
-    renderLeads()
+    render(myLeads)
 })
 
-function renderLeads() {
+function render(leads) {
     let listItems = ''
-for (let i = 0; i < myLeads.length; i++){
+for (let i = 0; i < leads.length; i++){
     listItems += `
     <li>
-      <a target='_blank' href='${myLeads[i]}'>${myLeads[i]}<\a>
+      <a target='_blank' href='${leads[i]}'>
+        ${leads[i]}
+      <\a>
     </li>
     `
 }
