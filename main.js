@@ -2,12 +2,22 @@ let myLeads = [];
 const inputBtn = document.getElementById("input-btn");
 const inputEl = document.getElementById("input-el")
 let ulEl = document.getElementById("ul-el")
+let deleteBtn = document.getElementById("delete-btn")
 
 let leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"))
-if(leadsFromLocalStorage){
+if(leadsFromLocalStorage){   // even upon refresh set myLeads to local storage to persist rendering on the page
     myLeads = leadsFromLocalStorage
     renderLeads()
 }
+
+//listen for dbclicks on the delete button
+//when clicked , clear localStorage, myLeads and call render() which is now an empty array
+deleteBtn.addEventListener('dblclick', function(){
+    localStorage.clear();
+    myLeads = [];
+    renderLeads()
+
+})
 
 inputBtn.addEventListener('click', function() {
     myLeads.push(inputEl.value)
