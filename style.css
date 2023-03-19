@@ -30,6 +30,7 @@ button {
 #delete-btn {
     color: #5f9341;
     background-color: white;
+    margin-left: 5px;
 }
 ul {
     list-style: none;
